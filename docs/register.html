@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register for an Event — New Zealand Gateway</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700;800&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="events.css">
+</head>
+<body class="nzg">
+
+<header class="nzg-header">
+  <div class="container">
+    <a class="nzg-logo" href="events.html">
+      <img class="nzg-logo-img" src="assets/img/logo/logo-web.png" alt="New Zealand Gateway">
+      <img class="nzg-jubilee sep" src="assets/img/logo/silver_jubilee.png" alt="Celebrating 25 years — Silver Jubilee">
+    </a>
+    <nav class="nzg-nav">
+      <a href="about.html">About Us</a>
+      <a href="study-nz.html">Study in New Zealand</a>
+      <a href="scholarships.html">Scholarships</a>
+      <a href="events.html" class="active">Events</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+    <a href="counselling.html" class="btn btn-teal">Free Counselling</a>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="events.html">Events</a> &nbsp;/&nbsp; Register</div>
+    <span class="hero-badge"><span class="dot"></span> Free entry · Limited slots</span>
+    <h1 id="regTitle">Register for our event</h1>
+    <p class="sub">Reserve your one-on-one consultation slot. Registration takes less than a minute and is completely free.</p>
+  </div>
+</section>
+
+<section class="page-section">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h2 style="margin-top:0">Your visit at a glance</h2>
+        <div class="ci-item"><div class="ic"><i class="fa-solid fa-calendar-days"></i></div><div><b>Event</b><span id="regEvent">New Zealand Education Roadshow</span></div></div>
+        <div class="ci-item"><div class="ic"><i class="fa-solid fa-location-dot"></i></div><div><b>City</b><span id="regCity">Ahmedabad / Mehsana</span></div></div>
+        <div class="ci-item"><div class="ic"><i class="fa-solid fa-ticket"></i></div><div><b>Fee</b><span>Free — no charge to attend</span></div></div>
+        <div class="ci-item"><div class="ic"><i class="fa-solid fa-user-group"></i></div><div><b>Bring</b><span>Parents welcome · academic documents optional</span></div></div>
+      </div>
+      <div class="form-card reveal">
+        <div class="form-success" id="okMsg"><i class="fa-solid fa-circle-check"></i> You're registered! A confirmation will be sent to your email and phone.</div>
+        <form id="regForm">
+          <div class="form-row">
+            <div class="field"><label>Full name</label><input type="text" name="name" required placeholder="Your name"></div>
+            <div class="field"><label>Phone</label><input type="tel" name="phone" required placeholder="+91"></div>
+          </div>
+          <div class="field"><label>Email</label><input type="email" name="email" required placeholder="you@email.com"></div>
+          <div class="form-row">
+            <div class="field"><label>Select city</label>
+              <select name="city" id="citySelect">
+                <option value="Ahmedabad">Ahmedabad</option>
+                <option value="Mehsana">Mehsana</option>
+                <option value="Vadodara">Vadodara</option>
+                <option value="Surat">Surat</option>
+              </select>
+            </div>
+            <div class="field"><label>Number attending</label><select name="count"><option>Just me</option><option>2</option><option>3</option><option>4+</option></select></div>
+          </div>
+          <div class="field"><label>Anything you'd like to discuss? (optional)</label><textarea name="message" placeholder="Universities, scholarships, visas..."></textarea></div>
+          <button type="submit" class="btn btn-lime btn-block">Confirm Registration — It's Free <i class="fa-solid fa-arrow-right"></i></button>
+          <p class="form-note">Slots are limited and allocated on a first-come basis.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="nzg-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="nzg-logo" href="events.html" style="margin-bottom:14px">
+          <img class="nzg-logo-img" style="height:54px" src="assets/img/logo/logo-white.png" alt="New Zealand Gateway">
+        </a>
+        <p class="footer-tagline">Study, Work, and Settle in New Zealand. Trusted by students across India for over 25 years.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="about.html">About Us</a>
+        <a href="scholarships.html">Scholarships</a>
+        <a href="visa.html">Visa Assistance</a>
+        <a href="blogs.html">Blogs</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="tel:18003090345"><i class="fa-solid fa-phone"></i>&nbsp; 1800-309-0345</a>
+        <a href="mailto:info@nzgateway.co.in"><i class="fa-solid fa-envelope"></i>&nbsp; info@nzgateway.co.in</a>
+        <a href="contact.html"><i class="fa-solid fa-location-dot"></i>&nbsp; 104, Sachet-II, Off C.G. Road, Navrangpura, Ahmedabad</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 NZ Gateway. All rights reserved.</div>
+  </div>
+</footer>
+
+<script src="events.js"></script>
+<script>
+  const params = new URLSearchParams(location.search);
+  const event = params.get('event');
+  const city = params.get('city');
+  if (event === 'fair') {
+    document.getElementById('regEvent').textContent = 'New Zealand Education Fair';
+    document.getElementById('regTitle').textContent = 'Register for the Education Fair';
+  }
+  if (city) {
+    const sel = document.getElementById('citySelect');
+    const match = [...sel.options].find(o => o.value.toLowerCase() === city.toLowerCase());
+    if (match) sel.value = match.value;
+    document.getElementById('regCity').textContent = match ? match.value : city;
+  }
+  document.getElementById('regForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('okMsg').classList.add('show');
+    this.reset();
+    document.getElementById('okMsg').scrollIntoView({behavior:'smooth', block:'center'});
+  });
+</script>
+</body>
+</html>

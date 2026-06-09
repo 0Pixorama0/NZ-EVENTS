@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events | NZ Gateway — Study, Work & Settle in New Zealand</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700;800&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="events.css">
+</head>
+<body class="nzg">
+
+<header class="nzg-header">
+  <div class="container">
+    <a class="nzg-logo" href="events.html">
+      <img class="nzg-logo-img" src="assets/img/logo/logo-web.png" alt="New Zealand Gateway">
+      <img class="nzg-jubilee sep" src="assets/img/logo/silver_jubilee.png" alt="Celebrating 25 years — Silver Jubilee">
+    </a>
+    <nav class="nzg-nav">
+      <a href="about.html">About Us</a>
+      <a href="study-nz.html">Study in New Zealand</a>
+      <a href="scholarships.html">Scholarships</a>
+      <a href="events.html" class="active">Events</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+    <a href="counselling.html" class="btn btn-teal">Free Counselling</a>
+  </div>
+</header>
+
+<section class="events-hero">
+  <div class="hero-circle c1"></div>
+  <div class="hero-circle c2"></div>
+  <div class="container">
+    <div class="hero-text">
+      <span class="hero-badge"><span class="dot"></span> Live &amp; Upcoming Events</span>
+      <h1>We're bringing <span class="accent">New Zealand</span> to every corner of India</h1>
+      <p class="sub">Meet our licensed immigration advisers in your city. Universities, scholarships, student visas &amp; future pathways — discussed one-on-one, completely free.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num" data-count="25" data-suffix="+">0</div><div class="lbl">Years of expertise</div></div>
+        <div class="hero-stat"><div class="num" data-count="200" data-suffix="+">0</div><div class="lbl">Student visas in 2025</div></div>
+        <div class="hero-stat"><div class="num" data-count="3">0</div><div class="lbl">Licensed advisers</div></div>
+        <div class="hero-stat"><div class="num" data-count="270" data-prefix="NZD " data-suffix="K+">0</div><div class="lbl">Scholarships / intake</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img class="student" src="assets/img/slider/banner.png" alt="Student ready to study in New Zealand">
+      <div class="hero-float f1"><span class="fic"><i class="fa-solid fa-graduation-cap"></i></span><div><b>8 Top Universities</b><span>One-on-one access</span></div></div>
+      <div class="hero-float f2"><span class="fic"><i class="fa-solid fa-id-badge"></i></span><div><b>Licensed Advisers</b><span>IAA registered</span></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="filter-bar reveal">
+    <span class="filter-label"><i class="fa-solid fa-filter" style="color:var(--teal)"></i> Filter by city</span>
+    <button class="chip on" data-city="all">All Cities</button>
+    <button class="chip" data-city="ahmedabad">Ahmedabad</button>
+    <button class="chip" data-city="mehsana">Mehsana</button>
+    <button class="chip" data-city="vadodara">Vadodara</button>
+    <button class="chip" data-city="surat">Surat</button>
+    <span class="filter-sep"></span>
+    <button class="chip" data-mode="offline">In-Person</button>
+    <button class="chip" data-mode="online">Online</button>
+  </div>
+</div>
+
+<section class="events-section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <h2>Upcoming <span>Events</span></h2>
+        <p>Free entry · Limited consultation slots · Parents welcome</p>
+      </div>
+    </div>
+
+    <div class="events-grid" id="eventsGrid">
+
+      <article class="event-card reveal" data-cities="ahmedabad mehsana" data-mode="offline">
+        <div class="poster poster-roadshow">
+          <span class="type-tag">Roadshow</span>
+          <span class="fee-tag"><i class="fa-solid fa-ticket"></i> Free Entry</span>
+          <h3>New Zealand Education Roadshow</h3>
+        </div>
+        <div class="body">
+          <p class="tagline">Meet the team behind hundreds of New Zealand success stories — personalised one-on-one consultations in your city.</p>
+          <div class="city-rows">
+            <div class="city-row"><span class="ico"><i class="fa-solid fa-location-dot"></i></span><b>Ahmedabad</b><span class="date">Fri, 20 June</span></div>
+            <div class="city-row"><span class="ico"><i class="fa-solid fa-location-dot"></i></span><b>Mehsana</b><span class="date">Sat, 21 June</span></div>
+          </div>
+          <div class="perks">
+            <span class="perk"><span class="tick">✓</span> One-on-One Consultations</span>
+            <span class="perk"><span class="tick">✓</span> 25+ Years of Expertise</span>
+            <span class="perk"><span class="tick">✓</span> 3 Licensed Advisers</span>
+          </div>
+          <div class="foot">
+            <a href="event-detail.html" class="btn btn-teal btn-block">View Event Details <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="event-card reveal reveal-d1" data-cities="ahmedabad vadodara surat" data-mode="offline">
+        <div class="poster poster-fair">
+          <span class="type-tag" style="background:#fff">Education Fair</span>
+          <span class="fee-tag"><i class="fa-solid fa-ticket"></i> Free Entry</span>
+          <h3>New Zealand Education Fair</h3>
+        </div>
+        <div class="body">
+          <p class="tagline">Universities, scholarships, student visas &amp; future pathways — all under one roof. One event, three cities.</p>
+          <div class="city-rows">
+            <div class="city-row"><span class="ico"><i class="fa-solid fa-location-dot"></i></span><b>Ahmedabad</b><span class="date">Fri, 10 July</span></div>
+            <div class="city-row"><span class="ico"><i class="fa-solid fa-location-dot"></i></span><b>Vadodara</b><span class="date">Sat, 11 July</span></div>
+            <div class="city-row"><span class="ico"><i class="fa-solid fa-location-dot"></i></span><b>Surat</b><span class="date">Sun, 12 July</span></div>
+          </div>
+          <div class="perks">
+            <span class="perk"><span class="tick">✓</span> Free Consultations</span>
+            <span class="perk"><span class="tick">✓</span> Scholarship Guidance</span>
+            <span class="perk"><span class="tick">✓</span> Visa &amp; Pathway Discussions</span>
+          </div>
+          <div class="foot">
+            <a href="event-detail-fair.html" class="btn btn-teal btn-block">View Event Details <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <p id="noEvents" style="display:none;text-align:center;padding:48px 0;font-size:16px">
+      No events match this filter yet — <a href="contact.html" style="color:var(--teal);font-weight:700">register your interest</a> and we'll notify you.
+    </p>
+  </div>
+</section>
+
+<section class="why-strip">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <h2>Why attend <span>our events?</span></h2>
+        <p>Our mission is to bring New Zealand study-abroad opportunities to every corner of India.</p>
+      </div>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal"><div class="ic"><i class="fa-solid fa-user-check"></i></div><h4>Personalised, not generic</h4><p>Unlike large exhibitions, our events focus on meaningful one-on-one conversations tailored to your profile.</p></div>
+      <div class="why-card reveal reveal-d1"><div class="ic"><i class="fa-solid fa-id-badge"></i></div><h4>Licensed advisers</h4><p>Speak directly with 3 Licensed Immigration Advisers with decades of New Zealand-focused expertise.</p></div>
+      <div class="why-card reveal reveal-d2"><div class="ic"><i class="fa-solid fa-graduation-cap"></i></div><h4>Scholarships covered</h4><p>NZD 270,000+ in scholarships secured in a single intake. Learn which ones fit your profile.</p></div>
+      <div class="why-card reveal reveal-d3"><div class="ic"><i class="fa-solid fa-route"></i></div><h4>A clear action plan</h4><p>Leave with university shortlists, visa clarity, and a roadmap for your New Zealand journey.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="uni-strip">
+  <div class="container">
+    <p class="cap">Speak one-on-one with <span>all top New Zealand universities</span></p>
+    <div class="marquee">
+      <div class="marquee-track">
+        <span class="uni-logo"><img src="assets/img/university/u1.png" alt="University of Otago"></span>
+        <span class="uni-logo"><img src="assets/img/university/u2.png" alt="University"></span>
+        <span class="uni-logo"><img src="assets/img/university/u3.png" alt="University"></span>
+        <span class="uni-logo"><img src="assets/img/university/u4.png" alt="University"></span>
+        <span class="uni-logo"><img src="assets/img/university/u5.png" alt="University"></span>
+        <span class="uni-logo"><img src="assets/img/university/u6.png" alt="University"></span>
+        <span class="uni-logo"><img src="assets/img/university/u7.png" alt="University"></span>
+        <span class="uni-logo"><img src="assets/img/university/u8.jpg" alt="University of Auckland"></span>
+        <span class="uni-logo"><img src="assets/img/university/u1.png" alt="University of Otago"></span>
+        <span class="uni-logo"><img src="assets/img/university/u2.png" alt="University"></span>
+        <span class="uni-logo"><img src="assets/img/university/u3.png" alt="University"></span>
+        <span class="uni-logo"><img src="assets/img/university/u4.png" alt="University"></span>
+        <span class="uni-logo"><img src="assets/img/university/u5.png" alt="University"></span>
+        <span class="uni-logo"><img src="assets/img/university/u6.png" alt="University"></span>
+        <span class="uni-logo"><img src="assets/img/university/u7.png" alt="University"></span>
+        <span class="uni-logo"><img src="assets/img/university/u8.jpg" alt="University of Auckland"></span>
+      </div>
+    </div>
+    <div class="trust-row" style="margin-top:40px">
+      <div class="trust-badge"><img src="assets/img/event/teacher-lic.jpg" alt="Licensed Immigration Advisers"><div class="tb-txt"><b>Licensed Immigration Advisers</b><p>3 IAA-registered advisers on our team</p></div></div>
+      <div class="trust-badge"><img src="assets/img/event/teacher2.png" alt="Recognised by Education New Zealand"><div class="tb-txt"><b>Globally Recognised Agency</b><p>Certified by Education New Zealand</p></div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="nzg-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="nzg-logo" href="events.html" style="margin-bottom:14px">
+          <img class="nzg-logo-img" style="height:54px" src="assets/img/logo/logo-white.png" alt="New Zealand Gateway">
+        </a>
+        <p class="footer-tagline">Study, Work, and Settle in New Zealand. Trusted by students across India for over 25 years.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="about.html">About Us</a>
+        <a href="scholarships.html">Scholarships</a>
+        <a href="visa.html">Visa Assistance</a>
+        <a href="blogs.html">Blogs</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="tel:18003090345"><i class="fa-solid fa-phone"></i>&nbsp; 1800-309-0345</a>
+        <a href="mailto:info@nzgateway.co.in"><i class="fa-solid fa-envelope"></i>&nbsp; info@nzgateway.co.in</a>
+        <a href="contact.html"><i class="fa-solid fa-location-dot"></i>&nbsp; 104, Sachet-II, Off C.G. Road, Navrangpura, Ahmedabad</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 NZ Gateway. All rights reserved.</div>
+  </div>
+</footer>
+
+<script src="events.js"></script>
+</body>
+</html>

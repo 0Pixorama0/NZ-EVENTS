@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Counselling — New Zealand Gateway</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700;800&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="events.css">
+</head>
+<body class="nzg">
+
+<header class="nzg-header">
+  <div class="container">
+    <a class="nzg-logo" href="events.html">
+      <img class="nzg-logo-img" src="assets/img/logo/logo-web.png" alt="New Zealand Gateway">
+      <img class="nzg-jubilee sep" src="assets/img/logo/silver_jubilee.png" alt="Celebrating 25 years — Silver Jubilee">
+    </a>
+    <nav class="nzg-nav">
+      <a href="about.html">About Us</a>
+      <a href="study-nz.html">Study in New Zealand</a>
+      <a href="scholarships.html">Scholarships</a>
+      <a href="events.html">Events</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+    <a href="counselling.html" class="btn btn-teal active">Free Counselling</a>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="events.html">Home</a> &nbsp;/&nbsp; Free Counselling</div>
+    <span class="hero-badge"><span class="dot"></span> 100% free · No obligation</span>
+    <h1>Book your free counselling session</h1>
+    <p class="sub">Speak one-on-one with a licensed adviser about universities, scholarships, visas and pathways — tailored to your profile.</p>
+  </div>
+</section>
+
+<section class="page-section">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h2 style="margin-top:0">What to expect</h2>
+        <div class="ci-item"><div class="ic"><i class="fa-solid fa-user-tie"></i></div><div><b>A licensed adviser</b><span>Talk to an IAA-registered immigration adviser.</span></div></div>
+        <div class="ci-item"><div class="ic"><i class="fa-solid fa-route"></i></div><div><b>A clear action plan</b><span>Leave with concrete next steps for your journey.</span></div></div>
+        <div class="ci-item"><div class="ic"><i class="fa-solid fa-sack-dollar"></i></div><div><b>Scholarship review</b><span>Find out which awards you may be eligible for.</span></div></div>
+        <div class="ci-item"><div class="ic"><i class="fa-solid fa-clock"></i></div><div><b>20–30 minutes</b><span>Online or in-person — whatever suits you.</span></div></div>
+      </div>
+      <div class="form-card reveal">
+        <div class="form-success" id="okMsg"><i class="fa-solid fa-circle-check"></i> Your session request is in! Our team will call you to confirm a time.</div>
+        <form id="counselForm">
+          <div class="form-row">
+            <div class="field"><label>Full name</label><input type="text" name="name" required placeholder="Your name"></div>
+            <div class="field"><label>Phone</label><input type="tel" name="phone" required placeholder="+91"></div>
+          </div>
+          <div class="field"><label>Email</label><input type="email" name="email" required placeholder="you@email.com"></div>
+          <div class="form-row">
+            <div class="field"><label>Preferred mode</label><select name="mode"><option>Online (video call)</option><option>In-person</option><option>Phone call</option></select></div>
+            <div class="field"><label>Intended intake</label><select name="intake"><option>2026</option><option>2027</option><option>Still deciding</option></select></div>
+          </div>
+          <div class="field"><label>What would you like to discuss?</label><textarea name="message" placeholder="Universities, scholarships, visas..."></textarea></div>
+          <button type="submit" class="btn btn-lime btn-block">Book My Free Session <i class="fa-solid fa-arrow-right"></i></button>
+          <p class="form-note">No fee, no obligation. We'll contact you to confirm your slot.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="nzg-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="nzg-logo" href="events.html" style="margin-bottom:14px">
+          <img class="nzg-logo-img" style="height:54px" src="assets/img/logo/logo-white.png" alt="New Zealand Gateway">
+        </a>
+        <p class="footer-tagline">Study, Work, and Settle in New Zealand. Trusted by students across India for over 25 years.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="about.html">About Us</a>
+        <a href="scholarships.html">Scholarships</a>
+        <a href="visa.html">Visa Assistance</a>
+        <a href="blogs.html">Blogs</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="tel:18003090345"><i class="fa-solid fa-phone"></i>&nbsp; 1800-309-0345</a>
+        <a href="mailto:info@nzgateway.co.in"><i class="fa-solid fa-envelope"></i>&nbsp; info@nzgateway.co.in</a>
+        <a href="contact.html"><i class="fa-solid fa-location-dot"></i>&nbsp; 104, Sachet-II, Off C.G. Road, Navrangpura, Ahmedabad</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 NZ Gateway. All rights reserved.</div>
+  </div>
+</footer>
+
+<script src="events.js"></script>
+<script>
+  document.getElementById('counselForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('okMsg').classList.add('show');
+    this.reset();
+    document.getElementById('okMsg').scrollIntoView({behavior:'smooth', block:'center'});
+  });
+</script>
+</body>
+</html>

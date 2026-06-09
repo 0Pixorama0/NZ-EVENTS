@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pixorama Group — Innovating the Future of Tech</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Particle canvas -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- ═══ 3D GLASS NAVBAR ═══ -->
+  <nav id="navbar">
+    <div class="nav-glass-edge"></div>
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <div class="logo-hex">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <path d="M14 2L25 8.5V19.5L14 26L3 19.5V8.5L14 2Z" fill="url(#logoGrad)" opacity="0.9"/>
+            <path d="M14 6L21.5 10.5V18.5L14 23L6.5 18.5V10.5L14 6Z" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.8"/>
+            <text x="14" y="17.5" text-anchor="middle" fill="white" font-size="8" font-weight="800" font-family="Manrope">PX</text>
+            <defs>
+              <linearGradient id="logoGrad" x1="3" y1="2" x2="25" y2="26" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#6366f1"/>
+                <stop offset="1" stop-color="#06b6d4"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">Pixorama<span class="logo-accent">Group</span></span>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#methodology" class="nav-link">Methodology</a></li>
+        <li><a href="#team" class="nav-link">Team</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <div class="nav-indicator" id="nav-indicator"></div>
+      </ul>
+
+      <a href="#contact" class="btn-nav">
+        <span>Get Started</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section id="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-glow glow-1"></div>
+    <div class="hero-glow glow-2"></div>
+    <div class="hero-glow glow-3"></div>
+
+    <div class="hero-content">
+      <!-- Left -->
+      <div class="hero-left">
+        <div class="hero-badge reveal-up">
+          <span class="badge-dot"></span>
+          Founded 2022 · Trusted by enterprises worldwide
+        </div>
+
+        <h1 class="hero-title reveal-up delay-1">
+          Build Amazing<br/>
+          <span class="gradient-text" id="typed"></span><span class="typed-cursor">|</span>
+        </h1>
+
+        <p class="hero-subtitle reveal-up delay-2">
+          Empowering modern enterprises with high-performance software solutions
+          that bridge technology complexity with business expansion.
+        </p>
+
+        <div class="hero-actions reveal-up delay-3">
+          <a href="#services" class="btn-primary magnetic">
+            <span>Explore Services</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#about" class="btn-ghost magnetic">Learn More</a>
+        </div>
+
+        <!-- Floating code card -->
+        <div class="code-card reveal-up delay-4">
+          <div class="code-card-header">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <span class="code-file">pixorama.config.ts</span>
+          </div>
+          <pre class="code-body"><code><span class="kw">const</span> <span class="var">config</span> = {
+  cloud: [<span class="str">"AWS"</span>, <span class="str">"Azure"</span>, <span class="str">"K8s"</span>],
+  ai: [<span class="str">"PyTorch"</span>, <span class="str">"OpenAI"</span>],
+  performance: <span class="num">99.9</span><span class="str">"%"</span>,
+  clients: <span class="str">"happy 😄"</span>,
+};</code></pre>
+        </div>
+      </div>
+
+      <!-- Right — World map + orbit -->
+      <div class="hero-right">
+        <!-- World dot-map with pinpoints -->
+        <div class="world-wrap">
+          <canvas id="world-canvas"></canvas>
+          <!-- Location pins -->
+          <div class="pin" style="--px:62%;--py:28%" data-city="New York">
+            <svg class="pin-svg" viewBox="0 0 24 32" fill="none">
+              <path d="M12 0C7.58 0 4 3.58 4 8c0 5.4 8 20 8 20s8-14.6 8-20c0-4.42-3.58-8-8-8z" fill="url(#pinG1)"/>
+              <circle cx="12" cy="8" r="3.5" fill="white" opacity="0.9"/>
+              <defs><linearGradient id="pinG1" x1="4" y1="0" x2="20" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#6366f1"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs>
+            </svg>
+            <div class="pin-ripple"></div>
+            <div class="pin-label">New York</div>
+          </div>
+          <div class="pin" style="--px:48%;--py:24%" data-city="London">
+            <svg class="pin-svg" viewBox="0 0 24 32" fill="none">
+              <path d="M12 0C7.58 0 4 3.58 4 8c0 5.4 8 20 8 20s8-14.6 8-20c0-4.42-3.58-8-8-8z" fill="url(#pinG2)"/>
+              <circle cx="12" cy="8" r="3.5" fill="white" opacity="0.9"/>
+              <defs><linearGradient id="pinG2" x1="4" y1="0" x2="20" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#06b6d4"/><stop offset="1" stop-color="#6366f1"/></linearGradient></defs>
+            </svg>
+            <div class="pin-ripple"></div>
+            <div class="pin-label">London</div>
+          </div>
+          <div class="pin" style="--px:54%;--py:29%" data-city="Berlin">
+            <svg class="pin-svg" viewBox="0 0 24 32" fill="none">
+              <path d="M12 0C7.58 0 4 3.58 4 8c0 5.4 8 20 8 20s8-14.6 8-20c0-4.42-3.58-8-8-8z" fill="url(#pinG3)"/>
+              <circle cx="12" cy="8" r="3.5" fill="white" opacity="0.9"/>
+              <defs><linearGradient id="pinG3" x1="4" y1="0" x2="20" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs>
+            </svg>
+            <div class="pin-ripple"></div>
+            <div class="pin-label">Berlin</div>
+          </div>
+          <div class="pin" style="--px:77%;--py:32%" data-city="Dubai">
+            <svg class="pin-svg" viewBox="0 0 24 32" fill="none">
+              <path d="M12 0C7.58 0 4 3.58 4 8c0 5.4 8 20 8 20s8-14.6 8-20c0-4.42-3.58-8-8-8z" fill="url(#pinG4)"/>
+              <circle cx="12" cy="8" r="3.5" fill="white" opacity="0.9"/>
+              <defs><linearGradient id="pinG4" x1="4" y1="0" x2="20" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#f59e0b"/><stop offset="1" stop-color="#10b981"/></linearGradient></defs>
+            </svg>
+            <div class="pin-ripple"></div>
+            <div class="pin-label">Dubai</div>
+          </div>
+          <div class="pin" style="--px:86%;--py:38%" data-city="Singapore">
+            <svg class="pin-svg" viewBox="0 0 24 32" fill="none">
+              <path d="M12 0C7.58 0 4 3.58 4 8c0 5.4 8 20 8 20s8-14.6 8-20c0-4.42-3.58-8-8-8z" fill="url(#pinG5)"/>
+              <circle cx="12" cy="8" r="3.5" fill="white" opacity="0.9"/>
+              <defs><linearGradient id="pinG5" x1="4" y1="0" x2="20" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#10b981"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs>
+            </svg>
+            <div class="pin-ripple"></div>
+            <div class="pin-label">Singapore</div>
+          </div>
+          <div class="pin" style="--px:91%;--py:30%" data-city="Tokyo">
+            <svg class="pin-svg" viewBox="0 0 24 32" fill="none">
+              <path d="M12 0C7.58 0 4 3.58 4 8c0 5.4 8 20 8 20s8-14.6 8-20c0-4.42-3.58-8-8-8z" fill="url(#pinG6)"/>
+              <circle cx="12" cy="8" r="3.5" fill="white" opacity="0.9"/>
+              <defs><linearGradient id="pinG6" x1="4" y1="0" x2="20" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#ec4899"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs>
+            </svg>
+            <div class="pin-ripple"></div>
+            <div class="pin-label">Tokyo</div>
+          </div>
+
+          <!-- Connection arcs are drawn on world-canvas -->
+        </div>
+
+        <!-- Floating stat pills over map -->
+        <div class="map-stat map-stat-1 reveal-up delay-2">
+          <span class="ms-val">6</span>
+          <span class="ms-label">Global Offices</span>
+        </div>
+        <div class="map-stat map-stat-2 reveal-up delay-3">
+          <span class="ms-dot"></span>
+          <span class="ms-label">98% Uptime</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <div class="scroll-mouse"><div class="scroll-dot"></div></div>
+      <span>Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- ═══ SERVICES ═══ -->
+  <section id="services" class="section">
+    <div class="container">
+      <div class="section-label reveal-up">What We Build</div>
+      <h2 class="section-title reveal-up">Enterprise-Grade <span class="gradient-text">Solutions</span></h2>
+      <p class="section-sub reveal-up">From cloud infrastructure to AI integration — we engineer systems that scale.</p>
+
+      <div class="services-grid" id="services-grid">
+
+        <!-- Card 1: Cloud Infrastructure -->
+        <div class="card-wrap reveal-card" data-delay="0" style="--c1:#6366f1;--c2:#06b6d4">
+          <div class="card-3d">
+            <!-- FRONT -->
+            <div class="card-face card-front">
+              <div class="card-shine"></div>
+              <div class="card-top-bar"></div>
+              <div class="card-avatar cloud-avatar">
+                <svg viewBox="0 0 80 80" fill="none">
+                  <!-- Cloud shape -->
+                  <ellipse cx="40" cy="38" rx="22" ry="13" stroke="url(#ca1)" stroke-width="1.8" class="cloud-body"/>
+                  <ellipse cx="28" cy="42" rx="10" ry="8" stroke="url(#ca1)" stroke-width="1.8" class="cloud-body"/>
+                  <ellipse cx="52" cy="42" rx="10" ry="8" stroke="url(#ca1)" stroke-width="1.8" class="cloud-body"/>
+                  <!-- Server at bottom -->
+                  <rect x="22" y="54" width="36" height="10" rx="3" stroke="url(#ca1)" stroke-width="1.5"/>
+                  <rect x="22" y="47" width="36" height="9" rx="3" stroke="url(#ca1)" stroke-width="1.5"/>
+                  <!-- LEDs -->
+                  <circle cx="50" cy="52" r="2" fill="#10b981" class="led-blink"/>
+                  <circle cx="55" cy="52" r="2" fill="#6366f1" class="led-blink d2"/>
+                  <circle cx="50" cy="59" r="2" fill="#06b6d4" class="led-blink d3"/>
+                  <!-- Connection beams -->
+                  <line x1="40" y1="29" x2="40" y2="47" stroke="url(#ca1)" stroke-width="1" stroke-dasharray="3 3" class="beam-flow"/>
+                  <line x1="30" y1="36" x2="28" y2="47" stroke="url(#ca1)" stroke-width="1" stroke-dasharray="3 3" class="beam-flow d2"/>
+                  <line x1="50" y1="36" x2="52" y2="47" stroke="url(#ca1)" stroke-width="1" stroke-dasharray="3 3" class="beam-flow d3"/>
+                  <!-- Floating data dots -->
+                  <circle cx="20" cy="30" r="3" fill="#6366f1" class="data-dot" style="--tx:10px;--ty:-8px"/>
+                  <circle cx="60" cy="25" r="2.5" fill="#06b6d4" class="data-dot d2" style="--tx:-8px;--ty:-10px"/>
+                  <circle cx="65" cy="40" r="2" fill="#8b5cf6" class="data-dot d3" style="--tx:8px;--ty:-6px"/>
+                  <defs>
+                    <linearGradient id="ca1" x1="18" y1="18" x2="62" y2="65" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#6366f1"/><stop offset="1" stop-color="#06b6d4"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <h3>Cloud Infrastructure</h3>
+              <div class="tech-tags"><span>AWS</span><span>Kubernetes</span><span>Azure</span></div>
+              <div class="flip-hint">Hover to learn more ↗</div>
+            </div>
+            <!-- BACK -->
+            <div class="card-face card-back">
+              <div class="card-back-icon">☁️</div>
+              <h3>Cloud Infrastructure</h3>
+              <p>AWS, Kubernetes, Azure — scalable, resilient cloud systems engineered for enterprise workloads with edge performance optimization and 99.9% SLA.</p>
+              <a href="#contact" class="btn-card">Explore Service →</a>
+              <div class="card-back-glow"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Enterprise Software -->
+        <div class="card-wrap reveal-card" data-delay="100" style="--c1:#8b5cf6;--c2:#ec4899">
+          <div class="card-3d">
+            <div class="card-face card-front">
+              <div class="card-shine"></div>
+              <div class="card-top-bar"></div>
+              <div class="card-avatar terminal-avatar">
+                <svg viewBox="0 0 80 80" fill="none">
+                  <!-- Terminal window -->
+                  <rect x="10" y="16" width="60" height="48" rx="6" stroke="url(#ca2)" stroke-width="1.8"/>
+                  <!-- Title bar -->
+                  <rect x="10" y="16" width="60" height="14" rx="6" fill="rgba(139,92,246,0.15)"/>
+                  <rect x="10" y="23" width="60" height="7" fill="rgba(139,92,246,0.15)"/>
+                  <!-- Window dots -->
+                  <circle cx="20" cy="23" r="2.5" fill="#ff5f57"/>
+                  <circle cx="28" cy="23" r="2.5" fill="#febc2e"/>
+                  <circle cx="36" cy="23" r="2.5" fill="#28c840"/>
+                  <!-- Code lines -->
+                  <rect x="18" y="36" width="8" height="2.5" rx="1" fill="#ec4899" class="code-line"/>
+                  <rect x="29" y="36" width="20" height="2.5" rx="1" fill="#8b5cf6" class="code-line d2"/>
+                  <rect x="18" y="43" width="14" height="2.5" rx="1" fill="#06b6d4" class="code-line d3"/>
+                  <rect x="35" y="43" width="12" height="2.5" rx="1" fill="#8b5cf6" class="code-line d4"/>
+                  <rect x="18" y="50" width="6" height="2.5" rx="1" fill="#c3e88d" class="code-line d5"/>
+                  <!-- Cursor blink -->
+                  <rect x="26" y="50" width="3" height="2.5" rx="0.5" fill="#ec4899" class="cursor-blink"/>
+                  <!-- Prompt -->
+                  <text x="18" y="62" font-family="JetBrains Mono" font-size="8" fill="#8b5cf6" opacity="0.8">&gt;_</text>
+                  <defs>
+                    <linearGradient id="ca2" x1="10" y1="16" x2="70" y2="64" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <h3>Enterprise Software</h3>
+              <div class="tech-tags"><span>Go</span><span>Rust</span><span>Node.js</span></div>
+              <div class="flip-hint">Hover to learn more ↗</div>
+            </div>
+            <div class="card-face card-back">
+              <div class="card-back-icon">⌨️</div>
+              <h3>Enterprise Software</h3>
+              <p>High-performance applications built with Go, Rust, and Node.js. Developer-focused architecture that prioritizes maintainability, velocity, and long-term scalability.</p>
+              <a href="#contact" class="btn-card">Explore Service →</a>
+              <div class="card-back-glow"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: AI Integration -->
+        <div class="card-wrap reveal-card" data-delay="200" style="--c1:#06b6d4;--c2:#6366f1">
+          <div class="card-3d">
+            <div class="card-face card-front">
+              <div class="card-shine"></div>
+              <div class="card-top-bar"></div>
+              <div class="card-avatar neural-avatar">
+                <svg viewBox="0 0 80 80" fill="none">
+                  <!-- Neural network nodes -->
+                  <!-- Layer 1 (input) -->
+                  <circle cx="18" cy="25" r="6" stroke="url(#ca3)" stroke-width="1.5" class="neural-node n1"/>
+                  <circle cx="18" cy="40" r="6" stroke="url(#ca3)" stroke-width="1.5" class="neural-node n2"/>
+                  <circle cx="18" cy="55" r="6" stroke="url(#ca3)" stroke-width="1.5" class="neural-node n3"/>
+                  <!-- Layer 2 (hidden) -->
+                  <circle cx="40" cy="20" r="6" stroke="url(#ca3)" stroke-width="1.5" class="neural-node n4"/>
+                  <circle cx="40" cy="35" r="6" stroke="url(#ca3)" stroke-width="1.5" class="neural-node n5"/>
+                  <circle cx="40" cy="50" r="6" stroke="url(#ca3)" stroke-width="1.5" class="neural-node n6"/>
+                  <circle cx="40" cy="65" r="6" stroke="url(#ca3)" stroke-width="1.5" class="neural-node n7"/>
+                  <!-- Layer 3 (output) -->
+                  <circle cx="62" cy="30" r="7" stroke="url(#ca3)" stroke-width="2" class="neural-node n8 output"/>
+                  <circle cx="62" cy="52" r="7" stroke="url(#ca3)" stroke-width="2" class="neural-node n9 output"/>
+                  <!-- Connections (simplified) -->
+                  <line x1="24" y1="25" x2="34" y2="20" stroke="url(#ca3)" stroke-width="0.8" opacity="0.4" class="synapse s1"/>
+                  <line x1="24" y1="25" x2="34" y2="35" stroke="url(#ca3)" stroke-width="0.8" opacity="0.4" class="synapse s2"/>
+                  <line x1="24" y1="40" x2="34" y2="35" stroke="url(#ca3)" stroke-width="0.8" opacity="0.4" class="synapse s3"/>
+                  <line x1="24" y1="40" x2="34" y2="50" stroke="url(#ca3)" stroke-width="0.8" opacity="0.4" class="synapse s4"/>
+                  <line x1="24" y1="55" x2="34" y2="50" stroke="url(#ca3)" stroke-width="0.8" opacity="0.4" class="synapse s5"/>
+                  <line x1="24" y1="55" x2="34" y2="65" stroke="url(#ca3)" stroke-width="0.8" opacity="0.4" class="synapse s6"/>
+                  <line x1="46" y1="20" x2="55" y2="30" stroke="url(#ca3)" stroke-width="0.8" opacity="0.4" class="synapse s7"/>
+                  <line x1="46" y1="35" x2="55" y2="30" stroke="url(#ca3)" stroke-width="0.8" opacity="0.4" class="synapse s8"/>
+                  <line x1="46" y1="50" x2="55" y2="52" stroke="url(#ca3)" stroke-width="0.8" opacity="0.4" class="synapse s9"/>
+                  <line x1="46" y1="65" x2="55" y2="52" stroke="url(#ca3)" stroke-width="0.8" opacity="0.4" class="synapse s10"/>
+                  <!-- Active signal dots traveling along synapses -->
+                  <circle r="2.5" fill="#06b6d4" class="signal sig1"><animateMotion dur="1.8s" repeatCount="indefinite" path="M24,25 L34,20"/></circle>
+                  <circle r="2.5" fill="#6366f1" class="signal sig2"><animateMotion dur="2.1s" repeatCount="indefinite" begin="0.5s" path="M46,35 L55,30"/></circle>
+                  <circle r="2.5" fill="#8b5cf6" class="signal sig3"><animateMotion dur="1.5s" repeatCount="indefinite" begin="1s" path="M24,55 L34,65"/></circle>
+                  <defs>
+                    <linearGradient id="ca3" x1="12" y1="12" x2="68" y2="72" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#06b6d4"/><stop offset="1" stop-color="#6366f1"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <h3>AI Integration</h3>
+              <div class="tech-tags"><span>PyTorch</span><span>OpenAI</span><span>TensorFlow</span></div>
+              <div class="flip-hint">Hover to learn more ↗</div>
+            </div>
+            <div class="card-face card-back">
+              <div class="card-back-icon">🤖</div>
+              <h3>AI Integration</h3>
+              <p>PyTorch, OpenAI, and TensorFlow powering intelligent analytics, automation, and decision-making seamlessly woven into your existing technology stack.</p>
+              <a href="#contact" class="btn-card">Explore Service →</a>
+              <div class="card-back-glow"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Cloud Migration -->
+        <div class="card-wrap reveal-card" data-delay="300" style="--c1:#10b981;--c2:#06b6d4">
+          <div class="card-3d">
+            <div class="card-face card-front">
+              <div class="card-shine"></div>
+              <div class="card-top-bar"></div>
+              <div class="card-avatar migrate-avatar">
+                <svg viewBox="0 0 80 80" fill="none">
+                  <!-- Source cloud (left) -->
+                  <ellipse cx="22" cy="35" rx="14" ry="9" stroke="url(#ca4)" stroke-width="1.8" class="cloud-src"/>
+                  <ellipse cx="16" cy="39" rx="7" ry="6" stroke="url(#ca4)" stroke-width="1.8" class="cloud-src"/>
+                  <ellipse cx="28" cy="39" rx="7" ry="6" stroke="url(#ca4)" stroke-width="1.8" class="cloud-src"/>
+                  <!-- Dest cloud (right) -->
+                  <ellipse cx="58" cy="35" rx="14" ry="9" stroke="url(#ca4)" stroke-width="1.8" class="cloud-dst"/>
+                  <ellipse cx="52" cy="39" rx="7" ry="6" stroke="url(#ca4)" stroke-width="1.8" class="cloud-dst"/>
+                  <ellipse cx="64" cy="39" rx="7" ry="6" stroke="url(#ca4)" stroke-width="1.8" class="cloud-dst"/>
+                  <!-- Migration arrow path -->
+                  <path d="M36 40 Q40 25 44 40" stroke="url(#ca4)" stroke-width="2" stroke-dasharray="4 3" class="migrate-path" fill="none"/>
+                  <polygon points="44,40 40,34 48,34" fill="#10b981" class="migrate-arrow"/>
+                  <!-- Data packets flying -->
+                  <rect x="36" y="52" width="8" height="5" rx="2" fill="rgba(16,185,129,0.3)" stroke="#10b981" stroke-width="1" class="packet p1"/>
+                  <rect x="36" y="60" width="8" height="5" rx="2" fill="rgba(6,182,212,0.3)" stroke="#06b6d4" stroke-width="1" class="packet p2"/>
+                  <!-- Check marks on dest -->
+                  <path d="M54 55 l3 3 6-6" stroke="#10b981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="check-draw"/>
+                  <path d="M54 65 l3 3 6-6" stroke="#06b6d4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="check-draw d2"/>
+                  <defs>
+                    <linearGradient id="ca4" x1="8" y1="26" x2="72" y2="70" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#10b981"/><stop offset="1" stop-color="#06b6d4"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <h3>Cloud Migration</h3>
+              <div class="tech-tags"><span>Zero Downtime</span><span>Multi-cloud</span></div>
+              <div class="flip-hint">Hover to learn more ↗</div>
+            </div>
+            <div class="card-face card-back">
+              <div class="card-back-icon">🚚</div>
+              <h3>Cloud Migration</h3>
+              <p>Seamless migration strategies that minimize downtime. We move your entire workload with zero disruption, maximum efficiency, and complete data integrity.</p>
+              <a href="#contact" class="btn-card">Explore Service →</a>
+              <div class="card-back-glow"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5: Cybersecurity -->
+        <div class="card-wrap reveal-card" data-delay="400" style="--c1:#f59e0b;--c2:#ef4444">
+          <div class="card-3d">
+            <div class="card-face card-front">
+              <div class="card-shine"></div>
+              <div class="card-top-bar"></div>
+              <div class="card-avatar shield-avatar">
+                <svg viewBox="0 0 80 80" fill="none">
+                  <!-- Shield outer -->
+                  <path d="M40 8L14 18v18c0 16.5 12 30 26 34 14-4 26-17.5 26-34V18L40 8z" stroke="url(#ca5)" stroke-width="1.8" class="shield-body"/>
+                  <!-- Shield inner -->
+                  <path d="M40 16L20 24v14c0 12 9 22 20 26 11-4 20-14 20-26V24L40 16z" stroke="url(#ca5)" stroke-width="1" opacity="0.4"/>
+                  <!-- Scan ring -->
+                  <circle cx="40" cy="38" r="14" stroke="url(#ca5)" stroke-width="1.5" stroke-dasharray="6 4" class="scan-ring"/>
+                  <!-- Checkmark -->
+                  <path d="M32 38l5 5 11-11" stroke="url(#ca5)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shield-check"/>
+                  <!-- Lock icon at top -->
+                  <rect x="36" y="10" width="8" height="6" rx="1" stroke="#f59e0b" stroke-width="1.2" fill="rgba(245,158,11,0.1)"/>
+                  <path d="M37.5 10 Q40 7 42.5 10" stroke="#f59e0b" stroke-width="1.2" fill="none"/>
+                  <!-- Alert dots -->
+                  <circle cx="62" cy="20" r="3" fill="#ef4444" class="alert-blink"/>
+                  <circle cx="62" cy="20" r="6" stroke="#ef4444" stroke-width="1" opacity="0.3" class="alert-ring"/>
+                  <defs>
+                    <linearGradient id="ca5" x1="14" y1="8" x2="66" y2="70" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#f59e0b"/><stop offset="1" stop-color="#ef4444"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <h3>Cybersecurity</h3>
+              <div class="tech-tags"><span>Encryption</span><span>Compliance</span><span>24/7</span></div>
+              <div class="flip-hint">Hover to learn more ↗</div>
+            </div>
+            <div class="card-face card-back">
+              <div class="card-back-icon">🛡️</div>
+              <h3>Cybersecurity</h3>
+              <p>Advanced encryption protocols, industry-standard compliance frameworks, and around-the-clock monitoring to protect your most critical infrastructure from threats.</p>
+              <a href="#contact" class="btn-card">Explore Service →</a>
+              <div class="card-back-glow"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6: Custom Development -->
+        <div class="card-wrap reveal-card" data-delay="500" style="--c1:#ec4899;--c2:#8b5cf6">
+          <div class="card-3d">
+            <div class="card-face card-front">
+              <div class="card-shine"></div>
+              <div class="card-top-bar"></div>
+              <div class="card-avatar blocks-avatar">
+                <svg viewBox="0 0 80 80" fill="none">
+                  <!-- Modular blocks assembling -->
+                  <rect x="10" y="44" width="22" height="22" rx="4" stroke="url(#ca6)" stroke-width="1.8" class="block b1"/>
+                  <rect x="35" y="44" width="22" height="22" rx="4" stroke="url(#ca6)" stroke-width="1.8" class="block b2"/>
+                  <rect x="22" y="20" width="22" height="22" rx="4" stroke="url(#ca6)" stroke-width="1.8" class="block b3"/>
+                  <!-- Connector lines -->
+                  <line x1="21" y1="55" x2="35" y2="55" stroke="url(#ca6)" stroke-width="1.2" class="connector c1"/>
+                  <line x1="33" y1="42" x2="33" y2="44" stroke="url(#ca6)" stroke-width="1.2" class="connector c2"/>
+                  <line x1="47" y1="42" x2="47" y2="44" stroke="url(#ca6)" stroke-width="1.2" class="connector c3"/>
+                  <!-- Code symbols on blocks -->
+                  <text x="17" y="58" font-family="JetBrains Mono" font-size="9" fill="#ec4899" class="block-symbol">&lt;/&gt;</text>
+                  <text x="39" y="58" font-family="JetBrains Mono" font-size="9" fill="#8b5cf6" class="block-symbol">{ }</text>
+                  <text x="27" y="34" font-family="JetBrains Mono" font-size="9" fill="#ec4899" class="block-symbol">( )</text>
+                  <!-- Floating plus/connection indicator -->
+                  <circle cx="62" cy="18" r="8" stroke="url(#ca6)" stroke-width="1.5" class="plus-ring"/>
+                  <path d="M62 13v10M57 18h10" stroke="url(#ca6)" stroke-width="2" stroke-linecap="round" class="plus-icon"/>
+                  <defs>
+                    <linearGradient id="ca6" x1="10" y1="10" x2="70" y2="70" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#ec4899"/><stop offset="1" stop-color="#8b5cf6"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <h3>Custom Development</h3>
+              <div class="tech-tags"><span>Bespoke</span><span>MVP</span><span>Scalable</span></div>
+              <div class="flip-hint">Hover to learn more ↗</div>
+            </div>
+            <div class="card-face card-back">
+              <div class="card-back-icon">🧩</div>
+              <h3>Custom Development</h3>
+              <p>Bespoke software tailored to your unique business requirements. From rapid MVP to enterprise-scale platform — we build precisely what you need, no more, no less.</p>
+              <a href="#contact" class="btn-card">Explore Service →</a>
+              <div class="card-back-glow"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ STATS ═══ -->
+  <section id="stats" class="section stats-section">
+    <div class="stats-bg"></div>
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item reveal-up">
+          <div class="stat-number"><span class="counter" data-target="98">0</span>%</div>
+          <div class="stat-label">Client Satisfaction</div>
+          <div class="stat-bar"><div class="stat-fill" data-width="98"></div></div>
+        </div>
+        <div class="stat-item reveal-up delay-1">
+          <div class="stat-number"><span class="counter" data-target="4.9">0</span>/5</div>
+          <div class="stat-label">Average Rating</div>
+          <div class="stat-bar"><div class="stat-fill" data-width="98"></div></div>
+        </div>
+        <div class="stat-item reveal-up delay-2">
+          <div class="stat-number"><span class="counter" data-target="24">0</span>/7</div>
+          <div class="stat-label">Active Monitoring</div>
+          <div class="stat-bar"><div class="stat-fill" data-width="100"></div></div>
+        </div>
+        <div class="stat-item reveal-up delay-3">
+          <div class="stat-number"><span class="counter" data-target="99.9">0</span>%</div>
+          <div class="stat-label">Uptime SLA</div>
+          <div class="stat-bar"><div class="stat-fill" data-width="99.9"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ METHODOLOGY ═══ -->
+  <section id="methodology" class="section">
+    <div class="container">
+      <div class="section-label reveal-up">How We Work</div>
+      <h2 class="section-title reveal-up">Our <span class="gradient-text">Methodology</span></h2>
+      <p class="section-sub reveal-up">A proven four-phase approach that turns your vision into a robust, scalable reality.</p>
+
+      <div class="timeline">
+        <div class="timeline-line"></div>
+
+        <div class="timeline-item reveal-left">
+          <div class="timeline-pin pin-drop" data-pin-delay="0">
+            <svg class="pin-icon-svg" viewBox="0 0 32 44" fill="none">
+              <path d="M16 0C9.37 0 4 5.37 4 12c0 7.75 12 28 12 28s12-20.25 12-28C28 5.37 22.63 0 16 0z" fill="url(#pinM1)"/>
+              <circle cx="16" cy="12" r="5" fill="white" opacity="0.9"/>
+              <text x="16" y="16" text-anchor="middle" fill="#6366f1" font-size="7" font-weight="800" font-family="Manrope">01</text>
+              <defs><linearGradient id="pinM1" x1="4" y1="0" x2="28" y2="40" gradientUnits="userSpaceOnUse"><stop stop-color="#6366f1"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs>
+            </svg>
+            <div class="pin-pulse"></div>
+          </div>
+          <div class="timeline-card">
+            <div class="phase-icon">🔍</div>
+            <h3>Discovery</h3>
+            <p>Deep dive into your business goals, technical landscape, and user needs. We map every constraint and opportunity before writing a single line of code.</p>
+            <ul>
+              <li>Stakeholder interviews</li>
+              <li>Technical audit</li>
+              <li>Feasibility mapping</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-right">
+          <div class="timeline-pin pin-drop" data-pin-delay="200">
+            <svg class="pin-icon-svg" viewBox="0 0 32 44" fill="none">
+              <path d="M16 0C9.37 0 4 5.37 4 12c0 7.75 12 28 12 28s12-20.25 12-28C28 5.37 22.63 0 16 0z" fill="url(#pinM2)"/>
+              <circle cx="16" cy="12" r="5" fill="white" opacity="0.9"/>
+              <text x="16" y="16" text-anchor="middle" fill="#06b6d4" font-size="7" font-weight="800" font-family="Manrope">02</text>
+              <defs><linearGradient id="pinM2" x1="4" y1="0" x2="28" y2="40" gradientUnits="userSpaceOnUse"><stop stop-color="#06b6d4"/><stop offset="1" stop-color="#6366f1"/></linearGradient></defs>
+            </svg>
+            <div class="pin-pulse"></div>
+          </div>
+          <div class="timeline-card">
+            <div class="phase-icon">📐</div>
+            <h3>Blueprinting</h3>
+            <p>Architecture diagrams, API contracts, and data flow models. We create a comprehensive technical blueprint before development begins.</p>
+            <ul>
+              <li>System architecture</li>
+              <li>API design</li>
+              <li>Infrastructure planning</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-left">
+          <div class="timeline-pin pin-drop" data-pin-delay="400">
+            <svg class="pin-icon-svg" viewBox="0 0 32 44" fill="none">
+              <path d="M16 0C9.37 0 4 5.37 4 12c0 7.75 12 28 12 28s12-20.25 12-28C28 5.37 22.63 0 16 0z" fill="url(#pinM3)"/>
+              <circle cx="16" cy="12" r="5" fill="white" opacity="0.9"/>
+              <text x="16" y="16" text-anchor="middle" fill="#10b981" font-size="7" font-weight="800" font-family="Manrope">03</text>
+              <defs><linearGradient id="pinM3" x1="4" y1="0" x2="28" y2="40" gradientUnits="userSpaceOnUse"><stop stop-color="#10b981"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs>
+            </svg>
+            <div class="pin-pulse"></div>
+          </div>
+          <div class="timeline-card">
+            <div class="phase-icon">⚙️</div>
+            <h3>Engineering</h3>
+            <p>Agile sprints with continuous delivery, code reviews, and automated testing. Full transparency throughout — you see progress every step of the way.</p>
+            <ul>
+              <li>Agile sprints</li>
+              <li>CI/CD pipelines</li>
+              <li>Automated testing</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-right">
+          <div class="timeline-pin pin-drop" data-pin-delay="600">
+            <svg class="pin-icon-svg" viewBox="0 0 32 44" fill="none">
+              <path d="M16 0C9.37 0 4 5.37 4 12c0 7.75 12 28 12 28s12-20.25 12-28C28 5.37 22.63 0 16 0z" fill="url(#pinM4)"/>
+              <circle cx="16" cy="12" r="5" fill="white" opacity="0.9"/>
+              <text x="16" y="16" text-anchor="middle" fill="#f59e0b" font-size="7" font-weight="800" font-family="Manrope">04</text>
+              <defs><linearGradient id="pinM4" x1="4" y1="0" x2="28" y2="40" gradientUnits="userSpaceOnUse"><stop stop-color="#f59e0b"/><stop offset="1" stop-color="#ef4444"/></linearGradient></defs>
+            </svg>
+            <div class="pin-pulse"></div>
+          </div>
+          <div class="timeline-card">
+            <div class="phase-icon">🚀</div>
+            <h3>Expansion</h3>
+            <p>Post-launch optimization, monitoring, and scaling. We stay with you as your platform grows, continuously refining performance and adding capabilities.</p>
+            <ul>
+              <li>Performance tuning</li>
+              <li>24/7 monitoring</li>
+              <li>Continuous scaling</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section id="about" class="section about-section">
+    <div class="about-glow"></div>
+    <div class="container about-inner">
+      <div class="about-text reveal-left">
+        <div class="section-label">Who We Are</div>
+        <h2 class="section-title">Technology That <span class="gradient-text">Moves Business</span></h2>
+        <p>Since 2022, Pixorama Group has been engineering the software backbone of ambitious enterprises. We believe complexity is no excuse for slow delivery — we bridge the gap between cutting-edge technology and real business outcomes.</p>
+        <p>Our team of engineers, architects, and strategists operates at the intersection of cloud, AI, and cybersecurity to deliver solutions that are not just functional — but transformational.</p>
+        <div class="about-highlights">
+          <div class="highlight">
+            <div class="highlight-icon">⚡</div>
+            <div><strong>Edge Performance</strong><span>Optimized for speed at scale</span></div>
+          </div>
+          <div class="highlight">
+            <div class="highlight-icon">🔒</div>
+            <div><strong>Advanced Encryption</strong><span>Security-first architecture</span></div>
+          </div>
+          <div class="highlight">
+            <div class="highlight-icon">📈</div>
+            <div><strong>Distributed Systems</strong><span>Built to grow with you</span></div>
+          </div>
+        </div>
+        <a href="#contact" class="btn-primary magnetic">Work With Us →</a>
+      </div>
+
+      <div class="about-visual reveal-right">
+        <div class="about-card-stack">
+          <div class="about-float-card card-a">
+            <div class="afc-top"><span class="afc-dot green"></span> System Online</div>
+            <div class="afc-metric">99.9%</div>
+            <div class="afc-label">Uptime this quarter</div>
+            <div class="afc-bar-row"><div class="afc-bar" style="width:99%"></div></div>
+          </div>
+          <div class="about-float-card card-b">
+            <div class="afc-top"><span class="afc-dot blue"></span> AI Model Active</div>
+            <div class="afc-metric">3.2ms</div>
+            <div class="afc-label">Average inference time</div>
+            <div class="pulse-line">
+              <svg viewBox="0 0 120 40" preserveAspectRatio="none">
+                <polyline points="0,20 15,20 20,5 25,35 30,20 45,20 50,10 55,30 60,20 75,20 80,8 85,32 90,20 105,20 110,15 115,25 120,20" fill="none" stroke="#6366f1" stroke-width="2"/>
+              </svg>
+            </div>
+          </div>
+          <div class="about-float-card card-c">
+            <div class="afc-top"><span class="afc-dot purple"></span> Deployments</div>
+            <div class="deploy-list">
+              <div class="deploy-item success">✓ prod-api-v3.2.1</div>
+              <div class="deploy-item success">✓ ml-inference-edge</div>
+              <div class="deploy-item running">⟳ k8s-autoscaler</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TEAM AVATARS ═══ -->
+  <section id="team" class="section team-section">
+    <div class="container">
+      <div class="section-label reveal-up">Our People</div>
+      <h2 class="section-title reveal-up">The Minds Behind <span class="gradient-text">the Magic</span></h2>
+      <p class="section-sub reveal-up">World-class engineers and strategists united by one mission — building software that matters.</p>
+
+      <div class="team-grid">
+
+        <div class="avatar-card reveal-up" data-delay="0" style="--av1:#6366f1;--av2:#06b6d4">
+          <div class="av-ring-wrap">
+            <div class="av-ring"></div>
+            <div class="av-inner">
+              <span class="av-initials">AC</span>
+            </div>
+            <div class="av-status"></div>
+          </div>
+          <div class="av-info">
+            <div class="av-name">Alex Chen</div>
+            <div class="av-role">Cloud Architect</div>
+            <div class="av-tags"><span>AWS</span><span>Kubernetes</span></div>
+          </div>
+          <div class="av-hover-glow"></div>
+        </div>
+
+        <div class="avatar-card reveal-up" data-delay="100" style="--av1:#8b5cf6;--av2:#ec4899">
+          <div class="av-ring-wrap">
+            <div class="av-ring"></div>
+            <div class="av-inner">
+              <span class="av-initials">SR</span>
+            </div>
+            <div class="av-status"></div>
+          </div>
+          <div class="av-info">
+            <div class="av-name">Sam Rivera</div>
+            <div class="av-role">AI/ML Lead</div>
+            <div class="av-tags"><span>PyTorch</span><span>OpenAI</span></div>
+          </div>
+          <div class="av-hover-glow"></div>
+        </div>
+
+        <div class="avatar-card reveal-up" data-delay="200" style="--av1:#f59e0b;--av2:#ef4444">
+          <div class="av-ring-wrap">
+            <div class="av-ring"></div>
+            <div class="av-inner">
+              <span class="av-initials">JK</span>
+            </div>
+            <div class="av-status"></div>
+          </div>
+          <div class="av-info">
+            <div class="av-name">Jordan Kim</div>
+            <div class="av-role">Security Expert</div>
+            <div class="av-tags"><span>Pen Testing</span><span>SIEM</span></div>
+          </div>
+          <div class="av-hover-glow"></div>
+        </div>
+
+        <div class="avatar-card reveal-up" data-delay="300" style="--av1:#10b981;--av2:#06b6d4">
+          <div class="av-ring-wrap">
+            <div class="av-ring"></div>
+            <div class="av-inner">
+              <span class="av-initials">MP</span>
+            </div>
+            <div class="av-status"></div>
+          </div>
+          <div class="av-info">
+            <div class="av-name">Maya Patel</div>
+            <div class="av-role">DevOps Engineer</div>
+            <div class="av-tags"><span>Terraform</span><span>Docker</span></div>
+          </div>
+          <div class="av-hover-glow"></div>
+        </div>
+
+        <div class="avatar-card reveal-up" data-delay="400" style="--av1:#ec4899;--av2:#8b5cf6">
+          <div class="av-ring-wrap">
+            <div class="av-ring"></div>
+            <div class="av-inner">
+              <span class="av-initials">LN</span>
+            </div>
+            <div class="av-status"></div>
+          </div>
+          <div class="av-info">
+            <div class="av-name">Lena Novak</div>
+            <div class="av-role">Full-Stack Dev</div>
+            <div class="av-tags"><span>Go</span><span>React</span></div>
+          </div>
+          <div class="av-hover-glow"></div>
+        </div>
+
+        <div class="avatar-card reveal-up" data-delay="500" style="--av1:#06b6d4;--av2:#6366f1">
+          <div class="av-ring-wrap">
+            <div class="av-ring"></div>
+            <div class="av-inner">
+              <span class="av-initials">DW</span>
+            </div>
+            <div class="av-status away"></div>
+          </div>
+          <div class="av-info">
+            <div class="av-name">David Wu</div>
+            <div class="av-role">Data Scientist</div>
+            <div class="av-tags"><span>Python</span><span>Spark</span></div>
+          </div>
+          <div class="av-hover-glow"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MARQUEE ═══ -->
+  <section class="marquee-section">
+    <div class="marquee-label">Technologies we master</div>
+    <div class="marquee-track">
+      <div class="marquee-inner">
+        <span>AWS</span><span class="sep">·</span><span>Kubernetes</span><span class="sep">·</span>
+        <span>Azure</span><span class="sep">·</span><span>Go</span><span class="sep">·</span>
+        <span>Rust</span><span class="sep">·</span><span>Node.js</span><span class="sep">·</span>
+        <span>PyTorch</span><span class="sep">·</span><span>OpenAI</span><span class="sep">·</span>
+        <span>TensorFlow</span><span class="sep">·</span><span>PostgreSQL</span><span class="sep">·</span>
+        <span>Redis</span><span class="sep">·</span><span>GraphQL</span><span class="sep">·</span>
+        <span>Docker</span><span class="sep">·</span><span>Terraform</span><span class="sep">·</span>
+        <span>AWS</span><span class="sep">·</span><span>Kubernetes</span><span class="sep">·</span>
+        <span>Azure</span><span class="sep">·</span><span>Go</span><span class="sep">·</span>
+        <span>Rust</span><span class="sep">·</span><span>Node.js</span><span class="sep">·</span>
+        <span>PyTorch</span><span class="sep">·</span><span>OpenAI</span><span class="sep">·</span>
+        <span>TensorFlow</span><span class="sep">·</span><span>PostgreSQL</span><span class="sep">·</span>
+        <span>Redis</span><span class="sep">·</span><span>GraphQL</span><span class="sep">·</span>
+        <span>Docker</span><span class="sep">·</span><span>Terraform</span><span class="sep">·</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT ═══ -->
+  <section id="contact" class="section contact-section">
+    <div class="contact-glow"></div>
+    <div class="container">
+      <div class="section-label reveal-up">Get In Touch</div>
+      <h2 class="section-title reveal-up">Ready to Build <span class="gradient-text">Something Great?</span></h2>
+      <p class="section-sub reveal-up">Tell us about your project. We'll get back to you within 24 hours.</p>
+
+      <div class="contact-inner">
+        <form class="contact-form reveal-left" id="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" placeholder="Jane Smith" required />
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="jane@company.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Company</label>
+            <input type="text" placeholder="Acme Corp" />
+          </div>
+          <div class="form-group">
+            <label>What can we help with?</label>
+            <select>
+              <option value="">Select a service...</option>
+              <option>Cloud Infrastructure</option>
+              <option>Enterprise Software</option>
+              <option>AI Integration</option>
+              <option>Cloud Migration</option>
+              <option>Cybersecurity</option>
+              <option>Custom Development</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Tell us more</label>
+            <textarea rows="4" placeholder="Describe your project, goals, and timeline..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary btn-full magnetic">
+            <span>Send Message</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M10 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </form>
+
+        <div class="contact-info reveal-right">
+          <div class="info-card">
+            <h3>Why work with us?</h3>
+            <div class="info-points">
+              <div class="info-point"><div class="info-icon">⚡</div><div><strong>Fast delivery</strong><p>Agile sprints mean you see results in weeks, not months.</p></div></div>
+              <div class="info-point"><div class="info-icon">🎯</div><div><strong>Goal-oriented</strong><p>Every decision is tied back to your business objectives.</p></div></div>
+              <div class="info-point"><div class="info-icon">🔐</div><div><strong>Security built-in</strong><p>Encryption and compliance woven into the foundation.</p></div></div>
+              <div class="info-point"><div class="info-icon">📈</div><div><strong>Scale with you</strong><p>Architecture designed for the growth you're planning for.</p></div></div>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+            <a href="mailto:hello@pixoramagroup.com" class="social-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              Email Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <div class="logo-hex" style="width:24px;height:24px">
+            <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+              <path d="M14 2L25 8.5V19.5L14 26L3 19.5V8.5L14 2Z" fill="url(#logoGrad2)" opacity="0.9"/>
+              <defs><linearGradient id="logoGrad2" x1="3" y1="2" x2="25" y2="26" gradientUnits="userSpaceOnUse"><stop stop-color="#6366f1"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs>
+            </svg>
+          </div>
+          <span class="logo-text">Pixorama<span class="logo-accent">Group</span></span>
+        </a>
+        <p>Empowering enterprises with high-performance software solutions since 2022.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="#services">Cloud Infrastructure</a>
+          <a href="#services">Enterprise Software</a>
+          <a href="#services">AI Integration</a>
+          <a href="#services">Cybersecurity</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#about">About</a>
+          <a href="#team">Team</a>
+          <a href="#methodology">Methodology</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Pixorama Group. All rights reserved.</p>
+      <p>Reimagined with ♥ and Node.js</p>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast">Message sent! We'll be in touch soon. 🚀</div>
+
+  <script src="script.js"></script>
+</body>
+</html>

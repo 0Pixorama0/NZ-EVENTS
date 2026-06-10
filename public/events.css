@@ -435,6 +435,103 @@ img { max-width: 100%; display: block; }
   .contact-grid { grid-template-columns: 1fr; }
 }
 
+/* ---------- Student Success Services page ---------- */
+/* hero with background photo + foreground student cutout */
+.page-hero.imaged {
+  background:
+    linear-gradient(115deg, rgba(11,42,41,0.96) 0%, rgba(20,82,79,0.86) 50%, rgba(20,82,79,0.55) 100%),
+    url('assets/img/life/g10.jpg') center/cover no-repeat;
+}
+.sss-hero .container { display: grid; grid-template-columns: 1.12fr 0.88fr; gap: 40px; align-items: center; position: relative; z-index: 2; }
+.sss-hero-visual { position: relative; display: flex; justify-content: center; }
+.sss-hero-visual .student { width: 100%; max-width: 380px; filter: drop-shadow(0 24px 48px rgba(0,0,0,0.45)); animation: floaty 6s ease-in-out infinite; }
+.sss-hero-visual .hero-float { position: absolute; }
+.sss-hero-visual .hero-float.f1 { top: 22px; left: -10px; animation: floaty 5s ease-in-out infinite; }
+.sss-hero-visual .hero-float.f2 { bottom: 26px; right: -8px; animation: floaty 5.5s ease-in-out 0.6s infinite; }
+
+/* community split card with real photo */
+.community-split { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 0; overflow: hidden; padding: 0; }
+.community-split .photo { background: center/cover no-repeat; min-height: 280px; }
+.community-split .csplit-body { padding: 30px; }
+@media (max-width: 720px) { .community-split { grid-template-columns: 1fr; } .community-split .photo { min-height: 200px; } }
+
+/* imaged dark band */
+.why-band.imaged { position: relative; overflow: hidden; }
+.why-band.imaged::before {
+  content: ""; position: absolute; inset: 0; z-index: 0;
+  background:
+    linear-gradient(135deg, rgba(11,42,41,0.95) 0%, rgba(20,82,79,0.9) 100%),
+    url('assets/img/life/g6.jpg') center/cover no-repeat;
+}
+.why-band.imaged > .container { position: relative; z-index: 1; }
+
+
+.journey-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 22px; }
+.journey-card {
+  position: relative; background: var(--white); border: 1px solid var(--light); border-radius: var(--radius-lg);
+  padding: 30px 28px; box-shadow: var(--shadow); overflow: hidden;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+.journey-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--teal); }
+.journey-card .jc-ghost {
+  position: absolute; top: -14px; right: -8px; font-size: 100px; line-height: 1;
+  color: var(--teal); opacity: 0.07; z-index: 0; pointer-events: none;
+  transition: transform 0.28s ease, opacity 0.28s ease;
+}
+.journey-card:hover .jc-ghost { transform: scale(1.08) rotate(-6deg); opacity: 0.1; }
+.journey-card .jc-head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; position: relative; z-index: 1; }
+.journey-card .step-num {
+  width: 54px; height: 54px; border-radius: 15px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--teal), var(--teal-dark)); color: #fff;
+  font-family: var(--font-head); font-weight: 800; font-size: 22px;
+  display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 18px rgba(20, 82, 79, 0.3);
+}
+.journey-card h3 { font-size: 17px; font-weight: 800; color: var(--dark); margin: 0; position: relative; z-index: 1; }
+.journey-card p { font-size: 14px; margin: 0; line-height: 1.65; position: relative; z-index: 1; }
+
+.svc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+.svc-card {
+  background: var(--white); border: 1px solid var(--light); border-radius: var(--radius-lg);
+  box-shadow: 0 6px 20px rgba(20, 82, 79, 0.08); transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.svc-card:hover { border-color: var(--teal); box-shadow: 0 12px 30px rgba(20, 82, 79, 0.16); }
+
+/* standard service tiles: header band + body */
+.svc-card:not(.community-split) { padding: 0; overflow: hidden; }
+.svc-card:not(.community-split) .svc-head {
+  padding: 22px 26px; background: var(--bg-soft); border-bottom: 1px solid var(--light); margin: 0;
+}
+.svc-card:not(.community-split) > p.lead { margin: 20px 26px 16px; }
+.svc-card:not(.community-split) > ul.check-cols { margin: 0 26px 26px; }
+
+.svc-head { display: flex; align-items: center; gap: 14px; }
+.svc-head .ic {
+  width: 50px; height: 50px; flex-shrink: 0; border-radius: 13px;
+  background: var(--white); border: 1px solid var(--light); color: var(--teal-dark);
+  display: flex; align-items: center; justify-content: center; font-size: 21px;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.svc-card:hover .svc-head .ic { background: var(--teal); border-color: var(--teal); color: #fff; }
+.svc-head .eyebrow { display: block; font-size: 11.5px; color: var(--teal-dark); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; }
+.svc-head h3 { font-size: 18px; font-weight: 800; color: var(--dark); margin: 0; }
+.svc-card > p.lead { font-size: 14.5px; line-height: 1.7; color: var(--text); }
+.check-cols { columns: 2; column-gap: 24px; margin: 0; padding: 0; list-style: none; }
+.check-cols li { break-inside: avoid; position: relative; padding: 6px 0 6px 26px; font-size: 14px; transition: color 0.15s ease; }
+.check-cols li::before { content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--teal); position: absolute; left: 0; top: 8px; font-size: 12px; }
+.check-cols li:hover { color: var(--teal-dark); }
+
+.why-band { background: linear-gradient(135deg, var(--dark) 0%, #14524f 100%); color: #fff; }
+.why-band h2 { color: #fff; }
+.why-band .section-eyebrow { color: var(--lime); }
+.why-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px 28px; margin-top: 26px; list-style: none; padding: 0; }
+.why-list li { position: relative; padding: 10px 0 10px 36px; font-size: 16px; color: rgba(255,255,255,0.92); border-bottom: 1px solid rgba(255,255,255,0.1); }
+.why-list li::before { content: "\f058"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--lime); position: absolute; left: 0; top: 10px; font-size: 18px; }
+
+.cta-band { text-align: center; }
+.cta-band .tagline-final { font-family: var(--font-head); font-weight: 800; color: var(--teal-dark); font-size: clamp(18px, 2.4vw, 24px); margin-top: 30px; }
+
+@media (max-width: 540px) { .check-cols { columns: 1; } }
+
 /* ---------- University logo marquee ---------- */
 .uni-strip { background: var(--white); padding: 48px 0 56px; border-top: 1px solid var(--light); }
 .uni-strip .cap { text-align: center; font-size: 14px; font-weight: 700; color: var(--text); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 28px; }

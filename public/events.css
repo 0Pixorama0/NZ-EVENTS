@@ -439,8 +439,8 @@ img { max-width: 100%; display: block; }
 /* hero with background photo + foreground student cutout */
 .page-hero.imaged {
   background:
-    linear-gradient(115deg, rgba(11,42,41,0.96) 0%, rgba(20,82,79,0.86) 50%, rgba(20,82,79,0.55) 100%),
-    url('assets/img/life/g10.jpg') center/cover no-repeat;
+    linear-gradient(115deg, rgba(11,42,41,0.94) 0%, rgba(17,66,64,0.72) 42%, rgba(20,82,79,0.3) 100%),
+    url('assets/img/life/auckland-skyline.jpg') center 30%/cover no-repeat;
 }
 .sss-hero .container { display: grid; grid-template-columns: 1.12fr 0.88fr; gap: 40px; align-items: center; position: relative; z-index: 2; }
 .sss-hero-visual { position: relative; display: flex; justify-content: center; }
